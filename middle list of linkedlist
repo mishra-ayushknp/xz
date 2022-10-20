@@ -1,0 +1,70 @@
+// important import statement  
+import java.util.*;  
+class Node  
+{  
+int num;  
+Node next;  
+// constructor of the class Node  
+Node(int n)  
+{  
+this.num = n;  
+this.next = null;  
+}  
+}  
+public class QueueExample1  
+{  
+// a method to find the size   
+// of the linked list  
+public int size(Node h)  
+{  
+int sz = 0;  
+while(h != null)  
+{  
+sz = sz + 1;  
+h = h.next;  
+}  
+return sz;  
+}  
+public void findNode(Node n)  
+{  
+Queue<Node> que = new LinkedList<Node>();  
+Node h = n;  
+// pushing the node from the stack  
+while(h != null)  
+{  
+que.add(h);  
+h = h.next;  
+}  
+// invoking the method size() to   
+// find the size of the linked list  
+int s = size(n);  
+// dividing the size by 2  
+s = s / 2;  
+while(s != 0)  
+{  
+// pop the elements from the node  
+que.remove();  
+s = s - 1;  
+}  
+// the value of the top node present in the stack   
+int val = (que.peek()).num;  
+System.out.println("The middle node of the linked list is: " + val);  
+}  
+// main method  
+public static void main(String argvs[])  
+{  
+// head node of the linked list  
+Node h = new Node(13);  
+// remaining node of the linked list  
+h.next = new Node(17);  
+h.next.next = new Node(90);  
+h.next.next.next = new Node(76);  
+h.next.next.next.next = new Node(45);  
+h.next.next.next.next.next = new Node(32);  
+h.next.next.next.next.next.next = new Node(10);  
+// creating an object of the class QueueExample1  
+QueueExample1 obj = new QueueExample1();  
+// invoking the method findNode()  
+obj.findNode(h);  
+}  
+}  
